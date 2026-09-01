@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SonicWall Native EDR - Enterprise Endpoint Protection">
+    <meta name="keywords" content="SonicWall, EDR, Cybersecurity, Endpoint Protection">
+    <title>SonicWall Native EDR - Enterprise Endpoint Protection Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1f35;
+            --secondary: #ff6b35;
+            --accent: #4a90e2;
+            --light: #f8f9fc;
+            --border: #e5e8f0;
+            --text-dark: #1a1f35;
+            --text-muted: #6b7280;
+            --success: #10b981;
+        }
+
+        html, body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-dark);
+            background: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 3rem;
+            background: white;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-logo {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .logo-item {
+            height: 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-item img {
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 1px 2px rgba(0,0,0,0.05));
+        }
+
+        .nav-brand-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-left: 1px solid var(--border);
+            padding-left: 2rem;
+            font-weight: 500;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: 6rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-family: 'Sora', sans-serif;
+            font-size: 3.2rem;
+            line-height: 1.2;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: #fef3e2;
+            color: #92400e;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid #fed7aa;
+        }
+
+        .hero-content p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        .feature-item::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: 700;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            padding: 1rem 2.2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+            background: #e55a2b;
+        }
+
+        .btn-secondary {
+            background: var(--light);
+            color: var(--primary);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--secondary);
+            color: var(--secondary);
+        }
+
+        .hero-visual {
+            background: linear-gradient(135deg, #f0f4f8 0%, #e9ecf1 100%);
+            border-radius: 16px;
+            padding: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-visual::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .visual-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .visual-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .visual-text {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        /* ===== SECTION ===== */
+        .section {
+            padding: 5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-title {
+            font-family: 'Sora', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ===== BENEFITS SECTION ===== */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .benefit-card:hover {
+            border-color: var(--secondary);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.12);
+            transform: translateY(-4px);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .benefit-card h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .benefit-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* ===== PRICING SECTION ===== */
+        .pricing-container {
+            background: var(--light);
+            border-radius: 16px;
+            padding: 3rem;
+        }
+
+        .pricing-highlight {
+            background: white;
+            border: 2px solid var(--secondary);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .pricing-highlight strong {
+            color: var(--secondary);
+            font-size: 1.1rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--secondary);
+            box-shadow: 0 12px 40px rgba(255, 107, 53, 0.15);
+            transform: scale(1.02);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: 24px;
+            right: -52px;
+            width: 200px;
+            background: var(--secondary);
+            color: white;
+            padding: 0.45rem 0;
+            transform: rotate(45deg);
+            text-align: center;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+        }
+
+        .pricing-card h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.4rem;
+            margin: 2rem 0 1rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .price {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 1rem 0;
+        }
+
+        .price-period {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .price-details {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin: 1.5rem 0;
+        }
+
+        .price-note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* ===== ELIGIBILITY SECTION ===== */
+        .eligibility {
+            background: linear-gradient(135deg, #fef3e2 0%, #feeae0 100%);
+            border-left: 4px solid var(--secondary);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+        }
+
+        .eligibility strong {
+            color: var(--secondary);
+            font-size: 1rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .eligibility p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* ===== FORM SECTION ===== */
+        .form-wrapper {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 3rem;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .form-header h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .form-header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-row.full {
+            grid-template-columns: 1fr;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.7rem;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+
+        .required {
+            color: var(--secondary);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background: var(--light);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+        }
+
+        /* Phone Field */
+        .phone-container {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+        }
+
+        .phone-prefix {
+            background: linear-gradient(135deg, var(--secondary) 0%, #e55a2b 100%);
+            color: white;
+            padding: 0.9rem 1rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            min-width: 65px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+        }
+
+        .phone-container input {
+            flex: 1;
+        }
+
+        .form-hint {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.4rem;
+        }
+
+        .form-error {
+            font-size: 0.8rem;
+            color: #ef4444;
+            margin-top: 0.4rem;
+            display: none;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1.1rem;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+            margin-top: 1.5rem;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+            background: #e55a2b;
+        }
+
+        .form-footer {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: linear-gradient(180deg, #212842 0%, #1a1f35 100%);
+            color: white;
+            padding: 4rem 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Sora', sans-serif;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .footer-logos {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo-item {
+            background: #ffffff;
+            padding: 1rem 1.8rem;
+            border-radius: 10px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        .footer-logo-item img {
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-divider {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-logo {
+                gap: 1rem;
+            }
+
+            .logo-item {
+                height: 32px;
+            }
+
+            .nav-brand-text {
+                display: none;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .hero {
+                padding: 3rem 1.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero-visual {
+                min-height: 300px;
+                padding: 2rem;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-wrapper {
+                padding: 1.5rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer {
+                padding: 2rem 1.5rem 1rem;
+            }
+
+            .footer-content {
+                gap: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="navbar">
+    <div class="nav-logo">
+        <div class="logo-item">
+            <img src="https://raw.githubusercontent.com/sureshg18/brand-assets/main/sonicwall_logo_web.png" alt="SonicWall">
+        </div>
+        <div class="logo-item">
+            <img src="https://raw.githubusercontent.com/sureshg18/brand-assets/main/ecaps_logo_web.png" alt="eCAPS">
+        </div>
+        <div class="nav-brand-text">Platinum Partner</div>
+    </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="hero-content">
+        <span class="hero-badge">🆕 NEW PRODUCT LAUNCH</span>
+        <h1>Enterprise Endpoint Protection, Simplified</h1>
+        <p>SonicWall Native EDR extends your firewall's protection to every endpoint. One vendor. One console. Enterprise-grade security, built for your organization.</p>
+        
+        <div class="hero-features">
+            <div class="feature-item">Lightweight single-agent deployment</div>
+            <div class="feature-item">Advanced threat detection with RTDMI engine</div>
+            <div class="feature-item">Seamless SonicWall firewall integration</div>
+            <div class="feature-item">Launch pricing available through Sept 30</div>
+        </div>
+
+        <div class="hero-cta">
+            <button class="btn btn-primary">Get Your Quote →</button>
+            <button class="btn btn-secondary">Learn More</button>
+        </div>
+    </div>
+
+    <div class="hero-visual">
+        <div class="visual-content">
+            <div class="visual-icon">🔒</div>
+            <div class="visual-text">Complete Endpoint Protection</div>
+        </div>
+    </div>
+</section>
+
+<!-- BENEFITS SECTION -->
+<section class="section" id="benefits">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Why Choose Native EDR</h2>
+            <p class="section-subtitle">Built for organizations that already trust SonicWall</p>
+        </div>
+
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">🎯</div>
+                <h3>Unified Platform</h3>
+                <p>Manage firewall and endpoint protection from a single console. No integration complexity, no additional vendors.</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">⚡</div>
+                <h3>Proven Technology</h3>
+                <p>RTDMI engine delivers advanced threat detection. The same technology that powers SonicWall's acclaimed firewalls.</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">🚀</div>
+                <h3>Fast Deployment</h3>
+                <p>Single lightweight agent installs in minutes. Minimal system impact, maximum protection coverage.</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">💼</div>
+                <h3>Expert Support</h3>
+                <p>eCAPS technical team and SonicWall engineering standing behind your deployment at every step.</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">📊</div>
+                <h3>Complete Visibility</h3>
+                <p>Real-time threat intelligence and comprehensive reporting across your entire endpoint network.</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">✓</div>
+                <h3>Compliance Ready</h3>
+                <p>Meets GDPR, HIPAA, PCI-DSS, and ISO 27001 requirements. Built-in audit trails and reporting.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRICING SECTION -->
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Launch Offer Pricing</h2>
+            <p class="section-subtitle">Special rates for SonicWall firewall customers — Available through September 30, 2026</p>
+        </div>
+
+        <div class="pricing-container">
+            <div class="eligibility">
+                <strong>⚠️ Offer Requirements</strong>
+                <p>You must have an in-warranty SonicWall firewall to qualify for these launch rates. After September 30, standard enterprise pricing applies.</p>
+            </div>
+
+            <div class="pricing-highlight">
+                <strong>eCAPS Commitment:</strong> As SonicWall Platinum Partner, we've negotiated exclusive launch pricing for our firewall customers only.
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-badge">LAUNCH OFFER</div>
+                    <h3>Annual Plan</h3>
+                    <div class="price">₹575</div>
+                    <div class="price-period">per user per year</div>
+                    <div class="price-details">
+                        <strong>No user limit — buy as many licenses as you need</strong><br>
+                        Quick protection for teams and offices of any size
+                    </div>
+                    <div class="price-note">+ GST as applicable | Limited-time offer</div>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-badge">LAUNCH OFFER</div>
+                    <h3>3-Year Plan</h3>
+                    <div class="price">₹1,149</div>
+                    <div class="price-period">per user for 3 years</div>
+                    <div class="price-details">
+                        <strong>No user limit — buy as many licenses as you need</strong><br>
+                        Best value — ₹383/user/year for enterprise protection
+                    </div>
+                    <div class="price-note">+ GST as applicable | Limited-time offer</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FORM SECTION -->
+<section class="section">
+    <div class="container">
+        <div class="form-wrapper">
+            <div class="form-header">
+                <h2>Verify Your Eligibility</h2>
+                <p>Tell us about your SonicWall setup. We'll confirm your firewall qualifies for launch pricing and send a personalized quote within 24 hours.</p>
+            </div>
+
+            <form id="loyaltyForm" onsubmit="handleSubmit(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Full Name <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Work Email <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required placeholder="john@company.com">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="company">Company Name <span class="required">*</span></label>
+                        <input type="text" id="company" name="company" required placeholder="Your Company Inc.">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Mobile Number <span class="required">*</span></label>
+                        <div class="phone-container">
+                            <div class="phone-prefix">+91</div>
+                            <input type="text" id="phone" name="phone" required placeholder="98765 43210" maxlength="10" inputmode="numeric" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+                        </div>
+                        <div class="form-hint">Enter 10-digit mobile number</div>
+                        <div class="form-error" id="phoneError">Please enter exactly 10 digits</div>
+                    </div>
+                </div>
+
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label for="firewall">SonicWall Firewall Model <span class="required">*</span></label>
+                        <select id="firewall" name="firewall" required>
+                            <option value="">Select your firewall model</option>
+                            <optgroup label="TZ Series — Gen 7">
+                                <option value="TZ80">TZ80</option>
+                                <option value="TZ270">TZ270</option>
+                                <option value="TZ370">TZ370</option>
+                                <option value="TZ470">TZ470</option>
+                                <option value="TZ570">TZ570</option>
+                                <option value="TZ670">TZ670</option>
+                            </optgroup>
+                            <optgroup label="TZ Series — Gen 6">
+                                <option value="SOHO-250">SOHO 250</option>
+                                <option value="TZ300">TZ300</option>
+                                <option value="TZ350">TZ350</option>
+                                <option value="TZ400">TZ400</option>
+                                <option value="TZ500">TZ500</option>
+                                <option value="TZ600">TZ600</option>
+                            </optgroup>
+                            <optgroup label="NSa Series — Gen 7">
+                                <option value="NSa-2700">NSa 2700</option>
+                                <option value="NSa-3700">NSa 3700</option>
+                                <option value="NSa-4700">NSa 4700</option>
+                                <option value="NSa-5700">NSa 5700</option>
+                                <option value="NSa-6700">NSa 6700</option>
+                            </optgroup>
+                            <optgroup label="NSa Series — Gen 6">
+                                <option value="NSa-2650">NSa 2650</option>
+                                <option value="NSa-3650">NSa 3650</option>
+                                <option value="NSa-4650">NSa 4650</option>
+                                <option value="NSa-5650">NSa 5650</option>
+                                <option value="NSa-6650">NSa 6650</option>
+                                <option value="NSA-2600">NSA 2600</option>
+                                <option value="NSA-3600">NSA 3600</option>
+                                <option value="NSA-4600">NSA 4600</option>
+                                <option value="NSA-5600">NSA 5600</option>
+                                <option value="NSA-6600">NSA 6600</option>
+                            </optgroup>
+                            <optgroup label="NSsp Series (High-End)">
+                                <option value="NSsp-10700">NSsp 10700</option>
+                                <option value="NSsp-11700">NSsp 11700</option>
+                                <option value="NSsp-13700">NSsp 13700</option>
+                                <option value="NSsp-15700">NSsp 15700</option>
+                            </optgroup>
+                            <optgroup label="NSv Series (Virtual)">
+                                <option value="NSv-270">NSv 270</option>
+                                <option value="NSv-470">NSv 470</option>
+                                <option value="NSv-870">NSv 870</option>
+                            </optgroup>
+                            <option value="other">Not sure / Other model</option>
+                        </select>
+                        <div class="form-hint">Wireless (W) variant? Select the base model. Not listed? Choose "Not sure / Other" and mention it below.</div>
+                    </div>
+                </div>
+
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label for="message">Additional Information</label>
+                        <textarea id="message" name="message" rows="3" placeholder="Number of endpoints, deployment timeline, specific requirements..."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="form-submit" id="submitBtn">Request Your Quote →</button>
+                <div id="formSuccess" style="display:none; background:#ecfdf5; border:1px solid #10b981; color:#065f46; padding:1rem 1.2rem; border-radius:8px; margin-top:1.2rem; text-align:center; font-size:0.95rem;">
+                    ✅ <strong>Thank you!</strong> Your enquiry has been received. Our team will confirm your eligibility and send your quote within 24 business hours.
+                </div>
+                <div id="formFail" style="display:none; background:#fef2f2; border:1px solid #ef4444; color:#991b1b; padding:1rem 1.2rem; border-radius:8px; margin-top:1.2rem; text-align:center; font-size:0.95rem;">
+                    ⚠️ Something went wrong. Please email us directly at <strong>info@caps.in</strong>.
+                </div>
+                <div class="form-footer">
+                    <strong>info@caps.in</strong> | 24-hour response SLA | Supported by 10+ offices across India
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div>
+                <div class="footer-logos">
+                    <div class="footer-logo-item">
+                        <img src="https://raw.githubusercontent.com/sureshg18/brand-assets/main/sonicwall_logo_web.png" alt="SonicWall">
+                    </div>
+                    <div class="footer-logo-item">
+                        <img src="https://raw.githubusercontent.com/sureshg18/brand-assets/main/ecaps_logo_web.png" alt="eCAPS">
+                    </div>
+                </div>
+                <div class="footer-text">
+                    <strong style="display: block; margin-bottom: 0.5rem;">SonicWall Native EDR</strong>
+                    Enterprise endpoint protection platform for organizations that trust SonicWall.
+                </div>
+            </div>
+            <div>
+                <h4>Get In Touch</h4>
+                <div class="footer-text">
+                    <strong>eCAPS Computers India Pvt. Ltd.</strong><br>
+                    SonicWall Platinum Partner<br><br>
+                    ✉️ info@caps.in<br><br>
+                    <strong>Pan-India Presence:</strong> With 10+ offices across India, our sales and technical teams are ready to support your deployment — wherever you are.<br><br>
+                    <strong>Limited-time offer:</strong> Launch pricing through September 30, 2026
+                </div>
+            </div>
+        </div>
+        <div class="footer-divider">
+            <p>&copy; 2026 eCAPS Computers India Pvt. Ltd. | SonicWall Platinum Partner<br>
+            <span style="font-size: 0.78rem; opacity: 0.8;">All trademarks and logos are the property of their respective owners.</span></p>
+        </div>
+    </div>
+</footer>
+
+<script>
+// ══════════════════════════════════════════════════════════════
+// PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL BELOW (ends with /exec)
+// From: script.google.com → Deploy → Web app → Copy URL
+// ══════════════════════════════════════════════════════════════
+const SCRIPT_URL = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
+
+function validatePhone() {
+    const phoneInput = document.getElementById('phone');
+    const phoneError = document.getElementById('phoneError');
+    const cleanPhone = phoneInput.value.trim().replace(/[^0-9]/g, '');
+
+    if (cleanPhone.length !== 10) {
+        phoneError.style.display = 'block';
+        phoneError.textContent = 'Please enter exactly 10 digits (currently: ' + cleanPhone.length + ' digits)';
+        phoneInput.focus();
+        return false;
+    }
+
+    const firstDigit = cleanPhone.charAt(0);
+    if (!['6', '7', '8', '9'].includes(firstDigit)) {
+        phoneError.style.display = 'block';
+        phoneError.textContent = 'Indian mobile numbers must start with 6, 7, 8, or 9';
+        phoneInput.focus();
+        return false;
+    }
+
+    phoneError.style.display = 'none';
+    return true;
+}
+
+function handleSubmit(event) {
+    event.preventDefault();
+
+    if (!validatePhone()) return false;
+
+    const form = document.getElementById('loyaltyForm');
+    const btn = document.getElementById('submitBtn');
+    const successBox = document.getElementById('formSuccess');
+    const failBox = document.getElementById('formFail');
+    const phoneInput = document.getElementById('phone');
+
+    successBox.style.display = 'none';
+    failBox.style.display = 'none';
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    // Build data with +91 prefixed phone
+    const data = new FormData(form);
+    data.set('phone', '+91' + phoneInput.value.trim().replace(/[^0-9]/g, ''));
+
+    fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: data
+    })
+    .then(function() {
+        successBox.style.display = 'block';
+        form.reset();
+        btn.textContent = 'Request Your Quote →';
+        btn.disabled = false;
+        successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    })
+    .catch(function() {
+        failBox.style.display = 'block';
+        btn.textContent = 'Request Your Quote →';
+        btn.disabled = false;
+    });
+
+    return false;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const phoneInput = document.getElementById('phone');
+    const phoneError = document.getElementById('phoneError');
+    
+    if (phoneInput) {
+        phoneInput.addEventListener('input', function() {
+            this.value = this.value.replace(/[^0-9]/g, '');
+            if (this.value.length > 10) {
+                this.value = this.value.slice(0, 10);
+            }
+            if (this.value.length > 0) {
+                phoneError.style.display = 'none';
+            }
+        });
+        
+        phoneInput.addEventListener('blur', function() {
+            const cleanPhone = this.value.replace(/[^0-9]/g, '');
+            if (cleanPhone.length > 0 && cleanPhone.length !== 10) {
+                phoneError.style.display = 'block';
+                phoneError.textContent = 'Please enter exactly 10 digits (currently: ' + cleanPhone.length + ' digits)';
+            } else if (cleanPhone.length === 10) {
+                const firstDigit = cleanPhone.charAt(0);
+                if (!['6', '7', '8', '9'].includes(firstDigit)) {
+                    phoneError.style.display = 'block';
+                    phoneError.textContent = 'Indian mobile numbers must start with 6, 7, 8, or 9';
+                } else {
+                    phoneError.style.display = 'none';
+                }
+            }
+        });
+    }
+
+    const ctaButtons = document.querySelectorAll('.btn-primary');
+    ctaButtons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            const formElement = document.querySelector('.form-wrapper');
+            if (formElement) {
+                e.preventDefault();
+                formElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                document.getElementById('name').focus();
+            }
+        });
+    });
+
+    const learnMoreButtons = document.querySelectorAll('.btn-secondary');
+    learnMoreButtons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            const benefitsSection = document.getElementById('benefits');
+            if (benefitsSection) {
+                e.preventDefault();
+                benefitsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+});
+</script>
+
+</body>
+</html>
