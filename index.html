@@ -6,7 +6,9 @@
     <meta name="description" content="SonicWall Native EDR - Enterprise Endpoint Protection">
     <meta name="keywords" content="SonicWall, EDR, Cybersecurity, Endpoint Protection">
     <title>SonicWall Native EDR - Enterprise Endpoint Protection Platform</title>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,21 +17,47 @@
         }
 
         :root {
-            --primary: #1a1f35;
-            --secondary: #ff6b35;
-            --accent: #4a90e2;
-            --light: #f8f9fc;
-            --border: #e5e8f0;
-            --text-dark: #1a1f35;
-            --text-muted: #6b7280;
-            --success: #10b981;
+            --navy: #0E1830;
+            --navy-2: #16233F;
+            --orange: #FF6600;
+            --orange-dark: #D94E00;
+            --ink: #131A2A;
+            --muted: #5B6478;
+            --muted-2: #8891A3;
+            --paper: #F6F8FB;
+            --line: #E3E7EF;
+            --white: #FFFFFF;
+            --ok: #1B8A5A;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         html, body {
-            font-family: 'Roboto', sans-serif;
-            color: var(--text-dark);
-            background: #ffffff;
+            font-family: 'Inter', sans-serif;
+            color: var(--ink);
+            background: var(--white);
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Manrope', sans-serif;
+            color: var(--navy);
+        }
+
+        a { color: inherit; }
+
+        :focus-visible {
+            outline: 2px solid var(--orange);
+            outline-offset: 2px;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 2.5rem;
         }
 
         /* ===== NAVIGATION ===== */
@@ -37,9 +65,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 3rem;
-            background: white;
-            border-bottom: 1px solid var(--border);
+            padding: 0.85rem 2.5rem;
+            background: var(--white);
+            border-bottom: 1px solid var(--line);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -47,12 +75,12 @@
 
         .nav-logo {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             align-items: center;
         }
 
         .logo-item {
-            height: 40px;
+            height: 34px;
             display: flex;
             align-items: center;
         }
@@ -60,447 +88,459 @@
         .logo-item img {
             height: 100%;
             object-fit: contain;
-            filter: drop-shadow(0 1px 2px rgba(0,0,0,0.05));
+        }
+
+        .nav-divider {
+            width: 1px;
+            height: 34px;
+            background: var(--line);
+        }
+
+        .logo-stack {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0.2rem;
+        }
+
+        .logo-stack .logo-item {
+            height: 32px;
         }
 
         .nav-brand-text {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            border-left: 1px solid var(--border);
-            padding-left: 2rem;
-            font-weight: 500;
+            font-size: 0.7rem;
+            color: var(--muted);
+            font-weight: 600;
+            letter-spacing: 0.2px;
         }
 
-        /* ===== HERO SECTION ===== */
+        .nav-cta {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--navy);
+            border: 1.5px solid var(--line);
+            padding: 0.55rem 1.1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            background: none;
+            transition: border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .nav-cta:hover {
+            border-color: var(--orange);
+            color: var(--orange-dark);
+        }
+
+        /* ===== HERO ===== */
         .hero {
-            padding: 6rem 3rem;
-            max-width: 1400px;
+            position: relative;
+            background: var(--navy);
+            overflow: hidden;
+        }
+
+        .hero-inner {
+            max-width: 1180px;
             margin: 0 auto;
+            padding: 3.4rem 2.5rem 3.2rem;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 2.5rem;
             align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #FFD9B8;
+            margin-bottom: 0.9rem;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--orange);
+            display: inline-block;
         }
 
         .hero-content h1 {
-            font-family: 'Sora', sans-serif;
-            font-size: 3.2rem;
-            line-height: 1.2;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            line-height: 1.15;
+            color: var(--white);
+            margin-bottom: 0.9rem;
             font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
-        .hero-badge {
-            display: inline-block;
-            background: #fef3e2;
-            color: #92400e;
-            padding: 0.6rem 1.2rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            border: 1px solid #fed7aa;
-        }
-
-        .hero-content p {
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            max-width: 500px;
+        .hero-content > p {
+            font-size: 1.02rem;
+            color: #B7C0D4;
+            line-height: 1.6;
+            margin-bottom: 1.4rem;
+            max-width: 480px;
         }
 
         .hero-features {
             display: flex;
             flex-direction: column;
-            gap: 1.2rem;
-            margin-bottom: 2.5rem;
+            gap: 0.65rem;
+            margin-bottom: 1.6rem;
+            border-top: 1px solid rgba(255,255,255,0.12);
+            padding-top: 1.1rem;
         }
 
         .feature-item {
             display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-size: 1rem;
-            color: var(--text-muted);
+            align-items: flex-start;
+            gap: 0.7rem;
+            font-size: 0.95rem;
+            color: #D7DCE8;
         }
 
-        .feature-item::before {
-            content: '✓';
-            color: var(--success);
-            font-weight: 700;
-            font-size: 1.3rem;
+        .feature-item svg {
             flex-shrink: 0;
+            margin-top: 2px;
         }
 
         .hero-cta {
             display: flex;
-            gap: 1.5rem;
-            margin-bottom: 3rem;
+            gap: 1rem;
         }
 
         .btn {
-            padding: 1rem 2.2rem;
-            border-radius: 8px;
-            font-size: 1rem;
+            padding: 0.9rem 1.7rem;
+            border-radius: 7px;
+            font-size: 0.96rem;
             font-weight: 600;
+            font-family: 'Inter', sans-serif;
             cursor: pointer;
             border: none;
-            transition: all 0.3s ease;
+            transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
             text-decoration: none;
             display: inline-block;
         }
 
         .btn-primary {
-            background: var(--secondary);
-            color: white;
-            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+            background: var(--orange);
+            color: var(--white);
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
-            background: #e55a2b;
+            background: var(--orange-dark);
         }
 
         .btn-secondary {
-            background: var(--light);
-            color: var(--primary);
-            border: 2px solid var(--border);
+            background: transparent;
+            color: var(--white);
+            border: 1.5px solid rgba(255,255,255,0.3);
         }
 
         .btn-secondary:hover {
-            border-color: var(--secondary);
-            color: var(--secondary);
+            border-color: rgba(255,255,255,0.7);
         }
 
+        /* Hero graphic: layered shield + endpoint nodes, brand colors only */
         .hero-visual {
-            background: linear-gradient(135deg, #f0f4f8 0%, #e9ecf1 100%);
-            border-radius: 16px;
-            padding: 3rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 400px;
-            position: relative;
-            overflow: hidden;
         }
 
-        .hero-visual::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
+        .hero-visual svg {
+            width: 100%;
+            max-width: 290px;
+            height: auto;
         }
 
-        .visual-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
+        /* ===== TRUST STRIP ===== */
+        .trust-strip {
+            background: var(--navy-2);
+            border-top: 1px solid rgba(255,255,255,0.08);
         }
 
-        .visual-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
+        .trust-strip .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 0.6rem 2.5rem;
+            padding-top: 0.8rem;
+            padding-bottom: 0.8rem;
         }
 
-        .visual-text {
-            font-size: 1.1rem;
-            color: var(--text-muted);
+        .trust-item {
+            font-size: 0.85rem;
+            color: #AEB7C9;
             font-weight: 500;
         }
 
-        /* ===== CONTAINER ===== */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 3rem;
+        .trust-item strong {
+            color: var(--white);
+            font-weight: 600;
         }
 
         /* ===== SECTION ===== */
         .section {
-            padding: 5rem 0;
-            border-bottom: 1px solid var(--border);
+            padding: 3.2rem 0;
+            border-bottom: 1px solid var(--line);
         }
 
         .section-header {
+            max-width: 640px;
+            margin-bottom: 1.8rem;
+        }
+
+        .section-header.center {
+            margin-left: auto;
+            margin-right: auto;
             text-align: center;
-            margin-bottom: 3.5rem;
         }
 
         .section-title {
-            font-family: 'Sora', sans-serif;
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
+            font-size: 1.8rem;
             font-weight: 700;
+            letter-spacing: -0.3px;
+            margin-bottom: 0.5rem;
         }
 
         .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto;
+            font-size: 0.98rem;
+            color: var(--muted);
         }
 
-        /* ===== BENEFITS SECTION ===== */
+        /* ===== BENEFITS ===== */
         .benefits-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
+            gap: 1px;
+            background: var(--line);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            overflow: hidden;
         }
 
         .benefit-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .benefit-card:hover {
-            border-color: var(--secondary);
-            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.12);
-            transform: translateY(-4px);
+            background: var(--white);
+            padding: 1.5rem 1.6rem;
         }
 
         .benefit-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            display: inline-block;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: #FFF1E6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.8rem;
         }
 
         .benefit-card h3 {
-            font-family: 'Sora', sans-serif;
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            color: var(--primary);
-            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 0.4rem;
+            font-weight: 700;
         }
 
         .benefit-card p {
-            font-size: 0.95rem;
-            color: var(--text-muted);
+            font-size: 0.92rem;
+            color: var(--muted);
             line-height: 1.7;
         }
 
-        /* ===== PRICING SECTION ===== */
-        .pricing-container {
-            background: var(--light);
-            border-radius: 16px;
-            padding: 3rem;
+        /* ===== PRICING ===== */
+        .eligibility {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-left: 3px solid var(--orange);
+            padding: 0.85rem 1.2rem;
+            border-radius: 6px;
+            margin-bottom: 1.4rem;
+            display: flex;
+            gap: 0.9rem;
+            align-items: flex-start;
         }
 
-        .pricing-highlight {
-            background: white;
-            border: 2px solid var(--secondary);
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-bottom: 3rem;
-            text-align: center;
+        .eligibility svg { flex-shrink: 0; margin-top: 2px; }
+
+        .eligibility p {
+            color: var(--muted);
+            font-size: 0.92rem;
         }
 
-        .pricing-highlight strong {
-            color: var(--secondary);
-            font-size: 1.1rem;
+        .eligibility strong {
+            color: var(--ink);
         }
 
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         .pricing-card {
-            background: white;
-            border: 2px solid var(--border);
-            border-radius: 12px;
-            padding: 2.5rem;
-            text-align: center;
-            position: relative;
-            transition: all 0.3s ease;
-            overflow: hidden;
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 1.5rem 1.8rem;
         }
 
-        .pricing-card:hover {
-            border-color: var(--secondary);
-            box-shadow: 0 12px 40px rgba(255, 107, 53, 0.15);
-            transform: scale(1.02);
+        .pricing-card.featured {
+            border-color: var(--orange);
+            box-shadow: 0 0 0 1px var(--orange);
         }
 
-        .pricing-badge {
-            position: absolute;
-            top: 24px;
-            right: -52px;
-            width: 200px;
-            background: var(--secondary);
-            color: white;
-            padding: 0.45rem 0;
-            transform: rotate(45deg);
-            text-align: center;
-            font-size: 0.72rem;
+        .pricing-tag {
+            display: inline-block;
+            font-size: 0.75rem;
             font-weight: 700;
-            letter-spacing: 1.5px;
-            box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+            color: var(--orange-dark);
+            background: #FFF1E6;
+            padding: 0.3rem 0.65rem;
+            border-radius: 5px;
+            margin-bottom: 0.7rem;
         }
 
         .pricing-card h3 {
-            font-family: 'Sora', sans-serif;
-            font-size: 1.4rem;
-            margin: 2rem 0 1rem;
-            color: var(--primary);
-            font-weight: 600;
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .price-row {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            margin-bottom: 0.3rem;
         }
 
         .price {
-            font-size: 2.8rem;
-            font-weight: 700;
-            color: var(--secondary);
-            margin: 1rem 0;
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: var(--navy);
         }
 
         .price-period {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--muted);
         }
 
         .price-details {
             font-size: 0.9rem;
-            color: var(--text-muted);
-            line-height: 1.8;
-            margin: 1.5rem 0;
+            color: var(--muted);
+            line-height: 1.6;
+            margin: 0.8rem 0;
+            padding-top: 0.8rem;
+            border-top: 1px solid var(--line);
+        }
+
+        .price-details strong {
+            color: var(--ink);
+            display: block;
+            margin-bottom: 0.2rem;
         }
 
         .price-note {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border);
-            padding-top: 1rem;
-            margin-top: 1rem;
+            font-size: 0.82rem;
+            color: var(--muted-2);
         }
 
-        /* ===== ELIGIBILITY SECTION ===== */
-        .eligibility {
-            background: linear-gradient(135deg, #fef3e2 0%, #feeae0 100%);
-            border-left: 4px solid var(--secondary);
-            padding: 2rem;
-            border-radius: 8px;
-            margin-bottom: 3rem;
+        /* ===== FORM ===== */
+        .form-section {
+            background: var(--paper);
         }
 
-        .eligibility strong {
-            color: var(--secondary);
-            font-size: 1rem;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .eligibility p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* ===== FORM SECTION ===== */
         .form-wrapper {
-            background: white;
-            border: 1px solid var(--border);
+            background: var(--white);
+            border: 1px solid var(--line);
             border-radius: 12px;
-            padding: 3rem;
-            max-width: 650px;
+            padding: 2rem 2.2rem 2.2rem;
+            max-width: 640px;
             margin: 0 auto;
         }
 
         .form-header {
-            text-align: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 1.4rem;
         }
 
         .form-header h2 {
-            font-family: 'Sora', sans-serif;
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 0.8rem;
-            font-weight: 600;
+            font-size: 1.4rem;
+            margin-bottom: 0.4rem;
+            font-weight: 700;
         }
 
         .form-header p {
-            color: var(--text-muted);
+            color: var(--muted);
             font-size: 0.95rem;
             line-height: 1.6;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
         }
 
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
+            gap: 1rem;
         }
 
         .form-row.full {
             grid-template-columns: 1fr;
         }
 
+        .form-group {
+            margin-bottom: 0.9rem;
+        }
+
         .form-group label {
             display: block;
             font-weight: 600;
-            margin-bottom: 0.7rem;
-            color: var(--primary);
-            font-size: 0.95rem;
+            margin-bottom: 0.35rem;
+            color: var(--ink);
+            font-size: 0.86rem;
         }
 
         .required {
-            color: var(--secondary);
+            color: var(--orange);
         }
 
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 0.9rem;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            font-family: 'Roboto', sans-serif;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            background: var(--light);
+            padding: 0.68rem 0.85rem;
+            border: 1px solid var(--line);
+            border-radius: 7px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.92rem;
+            color: var(--ink);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            background: var(--white);
         }
 
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--secondary);
-            background: white;
-            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+            border-color: var(--orange);
+            box-shadow: 0 0 0 3px rgba(255, 102, 0, 0.12);
         }
 
-        /* Phone Field */
         .phone-container {
             display: flex;
-            gap: 0.8rem;
-            align-items: center;
+            gap: 0.6rem;
         }
 
         .phone-prefix {
-            background: linear-gradient(135deg, var(--secondary) 0%, #e55a2b 100%);
-            color: white;
-            padding: 0.9rem 1rem;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            min-width: 65px;
+            background: var(--navy);
+            color: var(--white);
+            padding: 0.8rem 0.9rem;
+            border-radius: 7px;
+            font-weight: 600;
+            font-size: 0.92rem;
+            min-width: 52px;
             text-align: center;
-            box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
         }
 
         .phone-container input {
@@ -508,116 +548,135 @@
         }
 
         .form-hint {
-            font-size: 0.8rem;
-            color: var(--text-muted);
+            font-size: 0.78rem;
+            color: var(--muted-2);
             margin-top: 0.4rem;
         }
 
         .form-error {
-            font-size: 0.8rem;
-            color: #ef4444;
+            font-size: 0.78rem;
+            color: #C6361F;
             margin-top: 0.4rem;
             display: none;
         }
 
         .form-submit {
             width: 100%;
-            padding: 1.1rem;
-            background: var(--secondary);
-            color: white;
+            padding: 1rem;
+            background: var(--orange);
+            color: var(--white);
             border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
+            border-radius: 7px;
+            font-size: 0.98rem;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
-            margin-top: 1.5rem;
+            transition: background 0.2s ease;
+            margin-top: 0.6rem;
         }
 
         .form-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
-            background: #e55a2b;
+            background: var(--orange-dark);
+        }
+
+        .form-submit:disabled {
+            opacity: 0.7;
+            cursor: default;
         }
 
         .form-footer {
             text-align: center;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 1rem;
+            font-size: 0.82rem;
+            color: var(--muted);
+            margin-top: 1.2rem;
         }
 
         /* ===== FOOTER ===== */
         .footer {
-            background: linear-gradient(180deg, #212842 0%, #1a1f35 100%);
+            background: var(--navy);
             color: white;
-            padding: 4rem 3rem 2rem;
+            padding: 2.4rem 0 1.6rem;
         }
 
         .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
+            gap: 2.4rem;
+            margin-bottom: 1.6rem;
         }
 
         .footer-section h4 {
-            font-family: 'Sora', sans-serif;
-            font-size: 0.95rem;
+            color: var(--white);
+            font-size: 0.85rem;
             margin-bottom: 1rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.3px;
         }
 
         .footer-logos {
             display: flex;
-            gap: 2rem;
-            margin-bottom: 2rem;
+            align-items: flex-end;
+            gap: 1.4rem;
+            margin-bottom: 1.6rem;
+        }
+
+        .footer-logo-stack {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .footer-brand-text {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.65);
+            font-weight: 600;
+            letter-spacing: 0.2px;
         }
 
         .footer-logo-item {
-            background: #ffffff;
-            padding: 1rem 1.8rem;
-            border-radius: 10px;
-            height: 70px;
+            background: var(--white);
+            padding: 0.8rem 1.4rem;
+            border-radius: 8px;
+            height: 56px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
         }
 
         .footer-logo-item img {
-            height: 40px;
+            height: 30px;
             object-fit: contain;
         }
 
         .footer-text {
             font-size: 0.9rem;
             line-height: 1.8;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.72);
         }
 
         .footer-divider {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.85rem;
+            padding-top: 1.6rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.82rem;
         }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
-            .hero {
+            .hero-inner {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 1.6rem;
+                padding: 2.2rem 2.5rem;
+                text-align: left;
             }
 
-            .hero-content h1 {
-                font-size: 2.5rem;
+            .hero-visual {
+                order: -1;
+            }
+
+            .hero-visual svg {
+                max-width: 280px;
             }
 
             .benefits-grid {
@@ -639,27 +698,19 @@
 
         @media (max-width: 768px) {
             .navbar {
-                padding: 1rem 1.5rem;
+                padding: 1rem 1.4rem;
             }
 
-            .nav-logo {
-                gap: 1rem;
-            }
-
-            .logo-item {
-                height: 32px;
-            }
-
-            .nav-brand-text {
+            .nav-divider, .nav-brand-text {
                 display: none;
             }
 
             .container {
-                padding: 0 1.5rem;
+                padding: 0 1.4rem;
             }
 
-            .hero {
-                padding: 3rem 1.5rem;
+            .hero-inner {
+                padding: 1.8rem 1.4rem;
             }
 
             .hero-content h1 {
@@ -675,17 +726,12 @@
                 text-align: center;
             }
 
-            .hero-visual {
-                min-height: 300px;
-                padding: 2rem;
-            }
-
             .section {
-                padding: 3rem 0;
+                padding: 2.2rem 0;
             }
 
             .section-title {
-                font-size: 1.8rem;
+                font-size: 1.4rem;
             }
 
             .benefits-grid {
@@ -693,20 +739,12 @@
             }
 
             .form-wrapper {
-                padding: 1.5rem;
+                padding: 1.6rem;
             }
 
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer {
-                padding: 2rem 1.5rem 1rem;
-            }
-
-            .footer-content {
-                gap: 1.5rem;
-                margin-bottom: 1.5rem;
+            .trust-strip .container {
+                flex-direction: column;
+                gap: 0.6rem;
             }
         }
     </style>
@@ -719,164 +757,237 @@
         <div class="logo-item">
             <img src="https://raw.githubusercontent.com/sureshg18/brand-assets/main/sonicwall_logo_web.png" alt="SonicWall">
         </div>
-        <div class="logo-item">
-            <img src="https://raw.githubusercontent.com/sureshg18/brand-assets/main/ecaps_logo_web.png" alt="eCAPS">
+        <div class="nav-divider"></div>
+        <div class="logo-stack">
+            <span class="nav-brand-text">Platinum Partner</span>
+            <div class="logo-item">
+                <img src="https://raw.githubusercontent.com/sureshg18/brand-assets/main/ecaps_logo_web.png" alt="eCAPS">
+            </div>
         </div>
-        <div class="nav-brand-text">Platinum Partner</div>
     </div>
+    <button class="nav-cta" onclick="document.querySelector('.form-wrapper').scrollIntoView({behavior:'smooth', block:'center'})">Request a quote</button>
 </nav>
 
-<!-- HERO SECTION -->
+<!-- HERO -->
 <section class="hero">
-    <div class="hero-content">
-        <span class="hero-badge">🆕 NEW PRODUCT LAUNCH</span>
-        <h1>Enterprise Endpoint Protection, Simplified</h1>
-        <p>SonicWall Native EDR extends your firewall's protection to every endpoint. One vendor. One console. Enterprise-grade security, built for your organization.</p>
-        
-        <div class="hero-features">
-            <div class="feature-item">Lightweight single-agent deployment</div>
-            <div class="feature-item">Advanced threat detection with RTDMI engine</div>
-            <div class="feature-item">Seamless SonicWall firewall integration</div>
-            <div class="feature-item">Launch pricing available through Sept 30</div>
+    <div class="hero-inner">
+        <div class="hero-content">
+            <span class="hero-eyebrow">New from SonicWall</span>
+            <h1>Endpoint protection that extends the firewall you already trust</h1>
+            <p>SonicWall Native EDR brings firewall-grade detection to every laptop and server in your organization, managed from the same console — one vendor, one bill, one place to look.</p>
+
+            <div class="hero-features">
+                <div class="feature-item">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9.5L7 13.5L15 5" stroke="#FF6600" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span>Single lightweight agent — installs in minutes</span>
+                </div>
+                <div class="feature-item">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9.5L7 13.5L15 5" stroke="#FF6600" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span>Threat detection powered by SonicWall's RTDMI engine</span>
+                </div>
+                <div class="feature-item">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9.5L7 13.5L15 5" stroke="#FF6600" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span>Runs alongside your existing SonicWall firewall</span>
+                </div>
+                <div class="feature-item">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9.5L7 13.5L15 5" stroke="#FF6600" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span>Launch pricing for firewall customers, through Sept 30</span>
+                </div>
+            </div>
+
+            <div class="hero-cta">
+                <button class="btn btn-primary">Get your quote →</button>
+                <button class="btn btn-secondary">See what's included</button>
+            </div>
         </div>
 
-        <div class="hero-cta">
-            <button class="btn btn-primary">Get Your Quote →</button>
-            <button class="btn btn-secondary">Learn More</button>
-        </div>
-    </div>
+        <div class="hero-visual">
+            <svg viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Firewall protecting connected endpoints">
+                <!-- connection lines from shield to endpoint nodes -->
+                <line x1="180" y1="180" x2="70" y2="90" stroke="#2A385A" stroke-width="2"/>
+                <line x1="180" y1="180" x2="290" y2="90" stroke="#2A385A" stroke-width="2"/>
+                <line x1="180" y1="180" x2="60" y2="230" stroke="#2A385A" stroke-width="2"/>
+                <line x1="180" y1="180" x2="300" y2="230" stroke="#2A385A" stroke-width="2"/>
+                <line x1="180" y1="180" x2="180" y2="310" stroke="#2A385A" stroke-width="2"/>
 
-    <div class="hero-visual">
-        <div class="visual-content">
-            <div class="visual-icon">🔒</div>
-            <div class="visual-text">Complete Endpoint Protection</div>
+                <!-- endpoint nodes -->
+                <g>
+                    <circle cx="70" cy="90" r="20" fill="#16233F" stroke="#3A4A70" stroke-width="1.5"/>
+                    <rect x="61" y="82" width="18" height="14" rx="2" stroke="#B7C0D4" stroke-width="1.6" fill="none"/>
+                    <line x1="66" y1="99" x2="74" y2="99" stroke="#B7C0D4" stroke-width="1.6"/>
+                </g>
+                <g>
+                    <circle cx="290" cy="90" r="20" fill="#16233F" stroke="#3A4A70" stroke-width="1.5"/>
+                    <rect x="281" y="80" width="18" height="20" rx="2" stroke="#B7C0D4" stroke-width="1.6" fill="none"/>
+                    <line x1="285" y1="86" x2="295" y2="86" stroke="#B7C0D4" stroke-width="1.2"/>
+                    <line x1="285" y1="90" x2="295" y2="90" stroke="#B7C0D4" stroke-width="1.2"/>
+                </g>
+                <g>
+                    <circle cx="60" cy="230" r="20" fill="#16233F" stroke="#3A4A70" stroke-width="1.5"/>
+                    <circle cx="60" cy="230" r="7" stroke="#B7C0D4" stroke-width="1.6" fill="none"/>
+                    <line x1="60" y1="223" x2="60" y2="226" stroke="#B7C0D4" stroke-width="1.6"/>
+                </g>
+                <g>
+                    <circle cx="300" cy="230" r="20" fill="#16233F" stroke="#3A4A70" stroke-width="1.5"/>
+                    <rect x="291" y="222" width="18" height="14" rx="2" stroke="#B7C0D4" stroke-width="1.6" fill="none"/>
+                </g>
+                <g>
+                    <circle cx="180" cy="310" r="20" fill="#16233F" stroke="#3A4A70" stroke-width="1.5"/>
+                    <path d="M172 316 L180 300 L188 316 Z" stroke="#B7C0D4" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+                </g>
+
+                <!-- central shield -->
+                <path d="M180 100 L235 122 V178 C235 216 210 245 180 258 C150 245 125 216 125 178 V122 Z" fill="#FF6600"/>
+                <path d="M180 100 L235 122 V178 C235 216 210 245 180 258 C150 245 125 216 125 178 V122 Z" stroke="#FFB27A" stroke-width="1.5" fill="none" opacity="0.5"/>
+                <path d="M158 178 L173 193 L204 158" stroke="#0E1830" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
         </div>
     </div>
 </section>
 
-<!-- BENEFITS SECTION -->
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+    <div class="container">
+        <div class="trust-item"><strong>SonicWall</strong> Platinum Partner</div>
+        <div class="trust-item"><strong>10+</strong> offices across India</div>
+        <div class="trust-item"><strong>24-hour</strong> quote response SLA</div>
+        <div class="trust-item">GDPR · HIPAA · PCI-DSS · ISO 27001 ready</div>
+    </div>
+</div>
+
+<!-- BENEFITS -->
 <section class="section" id="benefits">
     <div class="container">
         <div class="section-header">
-            <h2 class="section-title">Why Choose Native EDR</h2>
-            <p class="section-subtitle">Built for organizations that already trust SonicWall</p>
+            <h2 class="section-title">Built for organizations that already run SonicWall</h2>
+            <p class="section-subtitle">Everything endpoint protection needs to do, without adding a second vendor to manage.</p>
         </div>
 
         <div class="benefits-grid">
             <div class="benefit-card">
-                <div class="benefit-icon">🎯</div>
-                <h3>Unified Platform</h3>
-                <p>Manage firewall and endpoint protection from a single console. No integration complexity, no additional vendors.</p>
+                <div class="benefit-icon">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="12" rx="2" stroke="#FF6600" stroke-width="1.6"/><path d="M2 8h16" stroke="#FF6600" stroke-width="1.6"/><circle cx="6" cy="6" r="0.7" fill="#FF6600"/></svg>
+                </div>
+                <h3>One console, not two</h3>
+                <p>Manage your firewall and your endpoints from the same place. No second dashboard, no separate support line to call.</p>
             </div>
 
             <div class="benefit-card">
-                <div class="benefit-icon">⚡</div>
-                <h3>Proven Technology</h3>
-                <p>RTDMI engine delivers advanced threat detection. The same technology that powers SonicWall's acclaimed firewalls.</p>
+                <div class="benefit-icon">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M11 2L4 11h5l-1 7 7-9h-5l1-7z" stroke="#FF6600" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                </div>
+                <h3>Detection you can trust</h3>
+                <p>Runs on RTDMI, the same real-time detection engine behind SonicWall's firewall appliances, tuned for endpoints.</p>
             </div>
 
             <div class="benefit-card">
-                <div class="benefit-icon">🚀</div>
-                <h3>Fast Deployment</h3>
-                <p>Single lightweight agent installs in minutes. Minimal system impact, maximum protection coverage.</p>
+                <div class="benefit-icon">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h5V4a6 6 0 016 6v5H4v-5z" stroke="#FF6600" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                </div>
+                <h3>Deploys in minutes</h3>
+                <p>A single lightweight agent, pushed remotely across your fleet. Minimal footprint, no reboots required for most machines.</p>
             </div>
 
             <div class="benefit-card">
-                <div class="benefit-icon">💼</div>
-                <h3>Expert Support</h3>
-                <p>eCAPS technical team and SonicWall engineering standing behind your deployment at every step.</p>
+                <div class="benefit-icon">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 17V9M10 17V3M17 17v-6" stroke="#FF6600" stroke-width="1.6" stroke-linecap="round"/></svg>
+                </div>
+                <h3>Full visibility</h3>
+                <p>Live threat intelligence and reporting across every endpoint, so you know what's happening before it becomes a problem.</p>
             </div>
 
             <div class="benefit-card">
-                <div class="benefit-icon">📊</div>
-                <h3>Complete Visibility</h3>
-                <p>Real-time threat intelligence and comprehensive reporting across your entire endpoint network.</p>
+                <div class="benefit-icon">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l7 3v5c0 4.5-3 7.5-7 8-4-.5-7-3.5-7-8V5l7-3z" stroke="#FF6600" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                </div>
+                <h3>Compliance ready</h3>
+                <p>Meets GDPR, HIPAA, PCI-DSS, and ISO 27001 expectations, with the audit trails your compliance team will ask for.</p>
             </div>
 
             <div class="benefit-card">
-                <div class="benefit-icon">✓</div>
-                <h3>Compliance Ready</h3>
-                <p>Meets GDPR, HIPAA, PCI-DSS, and ISO 27001 requirements. Built-in audit trails and reporting.</p>
+                <div class="benefit-icon">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="6" r="3" stroke="#FF6600" stroke-width="1.6"/><path d="M4 17c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#FF6600" stroke-width="1.6"/></svg>
+                </div>
+                <h3>Backed by real engineers</h3>
+                <p>eCAPS technical staff and SonicWall's own engineering team support your rollout, from planning through to go-live.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- PRICING SECTION -->
+<!-- PRICING -->
 <section class="section">
     <div class="container">
         <div class="section-header">
-            <h2 class="section-title">Launch Offer Pricing</h2>
-            <p class="section-subtitle">Special rates for SonicWall firewall customers — Available through September 30, 2026</p>
+            <h2 class="section-title">Launch pricing</h2>
+            <p class="section-subtitle">Reduced rates for existing SonicWall firewall customers, available through September 30, 2026.</p>
         </div>
 
-        <div class="pricing-container">
-            <div class="eligibility">
-                <strong>⚠️ Offer Requirements</strong>
-                <p>You must have an in-warranty SonicWall firewall to qualify for these launch rates. After September 30, standard enterprise pricing applies.</p>
+        <div class="eligibility">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7.5" stroke="#FF6600" stroke-width="1.4"/><path d="M9 6v4M9 12h.01" stroke="#FF6600" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <p><strong>Eligibility:</strong> an in-warranty SonicWall firewall is required to qualify for launch rates. Standard enterprise pricing applies after September 30.</p>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <span class="pricing-tag">Launch offer</span>
+                <h3>Annual plan</h3>
+                <div class="price-row">
+                    <span class="price">₹575</span>
+                    <span class="price-period">/ user / year</span>
+                </div>
+                <div class="price-details">
+                    <strong>No minimum license count</strong>
+                    License as many endpoints as you need, from a single office to a full enterprise fleet.
+                </div>
+                <div class="price-note">+ GST as applicable · Limited-time offer</div>
             </div>
 
-            <div class="pricing-highlight">
-                <strong>eCAPS Commitment:</strong> As SonicWall Platinum Partner, we've negotiated exclusive launch pricing for our firewall customers only.
-            </div>
-
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div class="pricing-badge">LAUNCH OFFER</div>
-                    <h3>Annual Plan</h3>
-                    <div class="price">₹575</div>
-                    <div class="price-period">per user per year</div>
-                    <div class="price-details">
-                        <strong>No user limit — buy as many licenses as you need</strong><br>
-                        Quick protection for teams and offices of any size
-                    </div>
-                    <div class="price-note">+ GST as applicable | Limited-time offer</div>
+            <div class="pricing-card featured">
+                <span class="pricing-tag">Best value</span>
+                <h3>3-year plan</h3>
+                <div class="price-row">
+                    <span class="price">₹1,149</span>
+                    <span class="price-period">/ user / 3 years</span>
                 </div>
-
-                <div class="pricing-card">
-                    <div class="pricing-badge">LAUNCH OFFER</div>
-                    <h3>3-Year Plan</h3>
-                    <div class="price">₹1,149</div>
-                    <div class="price-period">per user for 3 years</div>
-                    <div class="price-details">
-                        <strong>No user limit — buy as many licenses as you need</strong><br>
-                        Best value — ₹383/user/year for enterprise protection
-                    </div>
-                    <div class="price-note">+ GST as applicable | Limited-time offer</div>
+                <div class="price-details">
+                    <strong>Works out to ₹383 / user / year</strong>
+                    Same no-minimum licensing, locked in at launch pricing for the full term.
                 </div>
+                <div class="price-note">+ GST as applicable · Limited-time offer</div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- FORM SECTION -->
-<section class="section">
+<!-- FORM -->
+<section class="section form-section">
     <div class="container">
         <div class="form-wrapper">
             <div class="form-header">
-                <h2>Verify Your Eligibility</h2>
-                <p>Tell us about your SonicWall setup. We'll confirm your firewall qualifies for launch pricing and send a personalized quote within 24 hours.</p>
+                <h2>Check your eligibility</h2>
+                <p>Tell us about your SonicWall setup and we'll confirm you qualify for launch pricing, with a quote back within 24 hours.</p>
             </div>
 
             <form id="loyaltyForm" onsubmit="handleSubmit(event)">
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="name">Full Name <span class="required">*</span></label>
+                        <label for="name">Full name <span class="required">*</span></label>
                         <input type="text" id="name" name="name" required placeholder="John Doe">
                     </div>
                     <div class="form-group">
-                        <label for="email">Work Email <span class="required">*</span></label>
+                        <label for="email">Work email <span class="required">*</span></label>
                         <input type="email" id="email" name="email" required placeholder="john@company.com">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="company">Company Name <span class="required">*</span></label>
+                        <label for="company">Company name <span class="required">*</span></label>
                         <input type="text" id="company" name="company" required placeholder="Your Company Inc.">
                     </div>
                     <div class="form-group">
-                        <label for="phone">Mobile Number <span class="required">*</span></label>
+                        <label for="phone">Mobile number <span class="required">*</span></label>
                         <div class="phone-container">
                             <div class="phone-prefix">+91</div>
                             <input type="text" id="phone" name="phone" required placeholder="98765 43210" maxlength="10" inputmode="numeric" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
@@ -888,7 +999,7 @@
 
                 <div class="form-row full">
                     <div class="form-group">
-                        <label for="firewall">SonicWall Firewall Model <span class="required">*</span></label>
+                        <label for="firewall">SonicWall firewall model <span class="required">*</span></label>
                         <select id="firewall" name="firewall" required>
                             <option value="">Select your firewall model</option>
                             <optgroup label="TZ Series — Gen 7">
@@ -945,20 +1056,20 @@
 
                 <div class="form-row full">
                     <div class="form-group">
-                        <label for="message">Additional Information</label>
+                        <label for="message">Additional information</label>
                         <textarea id="message" name="message" rows="3" placeholder="Number of endpoints, deployment timeline, specific requirements..."></textarea>
                     </div>
                 </div>
 
-                <button type="submit" class="form-submit" id="submitBtn">Request Your Quote →</button>
-                <div id="formSuccess" style="display:none; background:#ecfdf5; border:1px solid #10b981; color:#065f46; padding:1rem 1.2rem; border-radius:8px; margin-top:1.2rem; text-align:center; font-size:0.95rem;">
-                    ✅ <strong>Thank you!</strong> Your enquiry has been received. Our team will confirm your eligibility and send your quote within 24 business hours.
+                <button type="submit" class="form-submit" id="submitBtn">Request your quote →</button>
+                <div id="formSuccess" style="display:none; background:#EAF7F0; border:1px solid #1B8A5A; color:#0E5C3B; padding:1rem 1.2rem; border-radius:8px; margin-top:1.2rem; text-align:center; font-size:0.92rem;">
+                    <strong>Thank you.</strong> Your enquiry has been received. Our team will confirm your eligibility and send your quote within 24 business hours.
                 </div>
-                <div id="formFail" style="display:none; background:#fef2f2; border:1px solid #ef4444; color:#991b1b; padding:1rem 1.2rem; border-radius:8px; margin-top:1.2rem; text-align:center; font-size:0.95rem;">
-                    ⚠️ Something went wrong. Please email us directly at <strong>info@caps.in</strong>.
+                <div id="formFail" style="display:none; background:#FDECEA; border:1px solid #C6361F; color:#7C2415; padding:1rem 1.2rem; border-radius:8px; margin-top:1.2rem; text-align:center; font-size:0.92rem;">
+                    Something went wrong. Please email us directly at <strong>info@caps.in</strong>.
                 </div>
                 <div class="form-footer">
-                    <strong>info@caps.in</strong> | 24-hour response SLA | Supported by 10+ offices across India
+                    <strong>info@caps.in</strong> · 24-hour response SLA · 10+ offices across India
                 </div>
             </form>
         </div>
@@ -974,29 +1085,32 @@
                     <div class="footer-logo-item">
                         <img src="https://raw.githubusercontent.com/sureshg18/brand-assets/main/sonicwall_logo_web.png" alt="SonicWall">
                     </div>
-                    <div class="footer-logo-item">
-                        <img src="https://raw.githubusercontent.com/sureshg18/brand-assets/main/ecaps_logo_web.png" alt="eCAPS">
+                    <div class="footer-logo-stack">
+                        <span class="footer-brand-text">Platinum Partner</span>
+                        <div class="footer-logo-item">
+                            <img src="https://raw.githubusercontent.com/sureshg18/brand-assets/main/ecaps_logo_web.png" alt="eCAPS">
+                        </div>
                     </div>
                 </div>
                 <div class="footer-text">
-                    <strong style="display: block; margin-bottom: 0.5rem;">SonicWall Native EDR</strong>
-                    Enterprise endpoint protection platform for organizations that trust SonicWall.
+                    <strong style="display: block; margin-bottom: 0.5rem; color: white;">SonicWall Native EDR</strong>
+                    Enterprise endpoint protection for organizations that already trust SonicWall.
                 </div>
             </div>
-            <div>
-                <h4>Get In Touch</h4>
+            <div class="footer-section">
+                <h4>Get in touch</h4>
                 <div class="footer-text">
-                    <strong>eCAPS Computers India Pvt. Ltd.</strong><br>
+                    <strong style="color: white;">eCAPS Computers India Pvt. Ltd.</strong><br>
                     SonicWall Platinum Partner<br><br>
-                    ✉️ info@caps.in<br><br>
-                    <strong>Pan-India Presence:</strong> With 10+ offices across India, our sales and technical teams are ready to support your deployment — wherever you are.<br><br>
-                    <strong>Limited-time offer:</strong> Launch pricing through September 30, 2026
+                    info@caps.in<br><br>
+                    <strong style="color: white;">Pan-India presence:</strong> with 10+ offices across India, our sales and technical teams are ready to support your deployment wherever you are.<br><br>
+                    <strong style="color: white;">Limited-time offer:</strong> launch pricing through September 30, 2026
                 </div>
             </div>
         </div>
         <div class="footer-divider">
-            <p>&copy; 2026 eCAPS Computers India Pvt. Ltd. | SonicWall Platinum Partner<br>
-            <span style="font-size: 0.78rem; opacity: 0.8;">All trademarks and logos are the property of their respective owners.</span></p>
+            <p>&copy; 2026 eCAPS Computers India Pvt. Ltd. · SonicWall Platinum Partner<br>
+            <span style="opacity: 0.85;">All trademarks and logos are the property of their respective owners.</span></p>
         </div>
     </div>
 </footer>
